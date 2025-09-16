@@ -1,8 +1,8 @@
 """
-Author: Mouad Lazrak | Cloud Bill
+Author: Cloud Bill
 
 Description:
-This inserts an item into an AWS DynamoDB table with a Time To Live (TTL) attribute.
+This script inserts an item into an AWS DynamoDB table with a Time To Live (TTL) attribute.
 The TTL attribute determines when the item will be automatically deleted by DynamoDB.
 """
 
@@ -26,6 +26,7 @@ def put_item_ttl(table_name: str, user_id: str, ttl_seconds: int) -> None:
     # Calculate the expiration time (Unix epoch timestamp in seconds)
     ttl_timestamp = datetime.now(timezone.utc) + timedelta(seconds=ttl_seconds)
     ttl_timestamp = int(ttl_timestamp.timestamp())
+    print(ttl_timestamp)
 
     # Write the item, including the TTL attribute
     table.put_item(
@@ -37,7 +38,7 @@ def put_item_ttl(table_name: str, user_id: str, ttl_seconds: int) -> None:
 
 
 put_item_ttl(
-    table_name="table_test_ttl",
-    user_id="3",
-    ttl_seconds=120,
+    table_name="Users",
+    user_id="1",
+    ttl_seconds=60,
 )
