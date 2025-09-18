@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Root that nests a child and (incorrectly) tries to set termination protection
+
+Parameters:
+  NestedTemplateURL:
+    Type: String
+    Description: S3 URL to nested.yml (e.g., https://s3.amazonaws.com/my-bucket/nested.yml)
+
+Resources:
+  ChildStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Ref NestedTemplateURL
+      # This is intentionally here to demonstrate the failure:
+      EnableTerminationProtection: true
