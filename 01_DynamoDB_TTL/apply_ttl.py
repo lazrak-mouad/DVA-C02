@@ -11,12 +11,8 @@ from datetime import datetime, timedelta, timezone
 
 
 def put_item_ttl(table_name: str, user_id: str, ttl_seconds: int) -> None:
-    """Write an item with a DynamoDB TTL attribute.
-
-    Inserts (or overwrites) an item in `table_name` with a partition key
-    `user_id` and a top-level `expires_at` attribute set to an epoch timestamp
-    in **seconds** (Number type). When TTL is enabled on the table for
-    `expires_at`, DynamoDB will eventually delete the item after it expires.
+    """
+    Write an item with a DynamoDB TTL attribute.
 
     Args:
         table_name (str): Name of the DynamoDB table.
