@@ -31,7 +31,7 @@ def put_item_ttl(table_name: str, user_id: str, ttl_seconds: int) -> None:
     )
     print(ttl_timestamp)
 
-    # Write the item to the 'Users' table
+    # Write the item to the DynamoDB table
     table.put_item(
         Item={
             "user_id": f"user_{user_id}",
